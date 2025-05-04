@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights - Enhancing Interoperability</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Sticky Vertical Navigation Bar -->
+  <div class="sidebar">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bpmn_model.html">BPMN Model</a></li>
+        <li><a href="etl_pipeline.html">ETL Pipeline</a></li>
+        <li><a href="insights.html">Insights</a></li>
+        <li><a href="team_contributions.html">Team Contributions</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <a href="https://github.iu.edu/moukanda/test" class="github-btn" target="_blank">
+        <img src="images/github_image.png" class="github-icon" alt="GitHub Logo">
+        <span>View Project on GitHub</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <!-- Insights Section -->
+    <section id="insights" class="section-bg">
+      <h1>Insights</h1>
+      <p>Key insights from the project include the effectiveness of using FHIR APIs to streamline data extraction, challenges faced in ensuring data consistency, and potential areas for improvement in the pipeline.</p>
+      
+      <img src="images/insights_image.png" alt="Project Insights" class="section-image">
+      <p style="margin-top: 20px; margin-bottom: 20px;">This project provided a comprehensive, hands-on understanding of how health data can be effectively transferred between systems using standardized APIs and coding frameworks. By building an end-to-end ETL pipeline using Python, we not only deepened our technical proficiency with FHIR resources but also learned the importance of clean data formatting, accurate terminology usage, and strict adherence to healthcare interoperability standards. The structure of FHIR, especially its modular resource model, gave us a strong foundation for programmatically managing patient information, clinical conditions, and procedures.
+    </p>
+      <p style="margin-top: 20px; margin-bottom: 20px;">One of the most valuable insights was understanding the difference between real-world clinical data systems and abstracted programming models. For example, translating clinical conditions between SNOMED CT and ICD-10 revealed gaps in terminology mapping that don’t always have one-to-one relationships. This forced us to think critically about fallback mechanisms, validation logic, and the consequences of missing data. Additionally, building HL7 v2 messages from FHIR resources emphasized the challenge of supporting legacy system interoperability in modern health IT workflows.
+    </p>
+      <p style="margin-top: 20px; margin-bottom: 20px;">Throughout the project, we encountered a variety of challenges: authentication tokens would expire, conditions would fail validation due to subtle schema mismatches, and Hermes (our terminology server) would return unexpected results or timeouts. However, each of these issues provided learning opportunities. We improved our debugging skills, modularized our code for easier reuse, and added conditional checks to prevent our scripts from crashing when something went wrong.
+    </p>
+      <p style="margin-top: 20px; margin-bottom: 20px;">A key lesson we took away was the value of maintaining consistent patient IDs across all tasks. Initially, mismatches between the resource IDs across tasks led to broken references. By saving the Task 1 patient ID and reusing it for all subsequent POST requests, we ensured data continuity across Condition, Observation, and Procedure tasks. Another important practice was validating resources only after they had been posted and saved as JSON, to keep the ETL logic and quality control steps cleanly separated.
+    </p>
+      <p style="margin-top: 20px; margin-bottom: 20px;">
+        In the future, this pipeline could be extended to include real-time monitoring dashboards, more comprehensive SNOMED/ICD mapping tools, or even EHR integration testing with real patient data (de-identified). Overall, this project helped us connect health informatics theory with practice, and gave us valuable experience that we can take forward into real-world clinical data engineering roles.</p>
+    <h2>Visualization</h2>
+    <img src="" alt="Project Insights" class="section-image">
+    <p style="margin-top: 20px; margin-bottom: 20px;">Text here</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Enhancing Interoperability. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
