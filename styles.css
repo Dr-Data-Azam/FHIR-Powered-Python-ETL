@@ -345,3 +345,13 @@ html {
 }
 
 
+/* ──────────────────────────────────────────────────────────────
+   Prevent Windows High‑Contrast / Dusk overrides
+────────────────────────────────────────────────────────────── */
+@media (forced-colors: active) {
+  /* Turn off forced color adjustments everywhere */
+  * {
+    forced-color-adjust: none !important;
+  }
+}
+
