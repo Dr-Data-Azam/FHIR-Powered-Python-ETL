@@ -119,22 +119,27 @@ body {
 .content {
   margin-left: 200px;
   padding: 40px 20px;
-  width: calc(100% - 200px);
   background-color: var(--content-bg);
   min-height: 100vh;
+  display: flex;       /* turn on flex */
+  /* no need for width calc any more */
   overflow-y: auto;
-  display: flex;
-  justify-content: flex-start;  /* fill full width */
 }
+
 
 .content-inner {
   width: 100%;
-  max-width: 1200px;   /* ↑ bumped up from 900px */
-  margin: 0 auto;
+  /* no more max‑width so it uses the full .content width */
+  max-width: none;
+  /* remove auto centering since we want edge‑to‑edge */
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  /* flex: 1 will ensure it fills the parent flex container */
+  flex: 1;
 }
+
 
 /*──────────────────────────────────────────────────────────────────
   SECTION STYLING
@@ -164,7 +169,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--highlight);
   margin-top: 25px;
   margin-bottom: 10px;
@@ -286,15 +291,54 @@ html {
   }
 }
 
-/* ──────────────────────────────────────────────────────────────────
-   ETL “Coding Tasks” link colors
-────────────────────────────────────────────────────────────────── */
-#etl ul li a {
-  color: #64854a;           /* pick any hex/RGB/web‑safe color here */
-  text-decoration: none;    /* remove underline if you like */
-  transition: color 0.2s;
+
+
+
+
+
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;        /* allow wrapping on narrow screens */
+  gap: 20px;              /* space between images */
+  justify-content: center;/* center the row */
+  margin: 2em 0;          /* optional vertical spacing */
 }
 
-#etl ul li a:hover {
-  color: #F2B134;           /* change to your highlight color on hover */
+.image-row .section-image {
+  width: 48%;             /* roughly half the container each */
+  margin: 0;              /* reset any extra spacing */
+  height: auto;           /* keep aspect ratio */
+  object-fit: contain;    /* scale nicely inside its box */
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Coding Tasks links (40–60 ETL page only)
+────────────────────────────────────────────────────────────── */
+/* ──────────────────────────────────────────────────────────────
+   Coding Tasks links (ETL page only)
+────────────────────────────────────────────────────────────── */
+#etl ul li a {
+  color: #4dabf7;            /* your chosen blue for tasks */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+#etl ul li a:hover {
+  color: #63b3ed;            /* lighter on hover */
+  text-decoration: underline;
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   Don’t flex‑shrink content too much around tablet widths
+────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .content {
+    display: block;          /* let content take full width below 1024px */
+  }
+  .content-inner {
+    max-width: none;         /* remove the desktop max‑width cap */
+    width: 100%;
+  }
+}
+
