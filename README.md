@@ -17,7 +17,7 @@ This project leverages the **FHIR API**, **OAuth2 authentication**, and **SNOMED
 ## Project Structure
 
 FHIR-Powered-Python-ETL/
--**│**
+- **│**
 - **├──** FHIR_ETL_Project/ # Main ETL project code
 - **├──** images/ # Folder for images and diagrams
 - **├──** index.html # Homepage for the website
@@ -27,17 +27,17 @@ FHIR-Powered-Python-ETL/
 - **├──** insights.html # Insights page
 - **├──** styles.css # Custom styles for the website
 - **├──** README.md # Project documentation
--**│**
--**└──** .gitignore # List of files/folders to ignore by Git
+- **│**
+- **└──** .gitignore # List of files/folders to ignore by Git
 
 ## Technologies Used
--**Python 3.x**: Used for scripting the ETL process and handling data extraction, transformation, and loading.
--**FHIR (Fast Healthcare Interoperability Resources)**: A modern healthcare data exchange standard used for extracting and posting patient data.
--**SNOMED CT**: Used for standardized medical coding to classify clinical information.
--**OAuth2**: Used for secure authentication when accessing the FHIR API.
--**Requests**: Python library for making HTTP requests to fetch and send data to FHIR servers.
--**JSON**: Used to structure data for interaction with APIs and for data storage.
--**GitHub Pages**: Used to host a static website displaying project details and visualizations.
+- **Python 3.x**: Used for scripting the ETL process and handling data extraction, transformation, and loading.
+- **FHIR (Fast Healthcare Interoperability Resources)**: A modern healthcare data exchange standard used for extracting and posting patient data.
+- **SNOMED CT**: Used for standardized medical coding to classify clinical information.
+- **OAuth2**: Used for secure authentication when accessing the FHIR API.
+- **Requests**: Python library for making HTTP requests to fetch and send data to FHIR servers.
+- **JSON**: Used to structure data for interaction with APIs and for data storage.
+- **GitHub Pages**: Used to host a static website displaying project details and visualizations.
 
 ## Learning Experience
 Throughout this project, I gained significant knowledge about healthcare data interoperability. By using FHIR, I was able to understand how standardized data exchange works in healthcare settings. The use of OAuth2 for authentication taught me how to securely manage access tokens when interacting with healthcare APIs.
