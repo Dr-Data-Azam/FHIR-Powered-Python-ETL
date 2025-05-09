@@ -17,7 +17,7 @@ This project leverages the **FHIR API**, **OAuth2 authentication**, and **SNOMED
 ## Project Structure
 
 FHIR-Powered-Python-ETL/
-- **│**
+**│**
 - **├──** FHIR_ETL_Project/ # Main ETL project code
 ├── images/ # Folder for images and diagrams
 ├── index.html # Homepage for the website
