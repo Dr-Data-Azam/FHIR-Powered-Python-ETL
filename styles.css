@@ -332,13 +332,16 @@ html {
 /* ──────────────────────────────────────────────────────────────
    Don’t flex‑shrink content too much around tablet widths
 ────────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .content {
-    display: block;          /* let content take full width below 1024px */
-  }
-  .content-inner {
-    max-width: none;         /* remove the desktop max‑width cap */
+    display: block;
+    margin-left: 0;
     width: 100%;
   }
+  .content-inner {
+    width: 100%;
+    max-width: none;
+  }
 }
+
 
