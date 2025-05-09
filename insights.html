@@ -18,7 +18,7 @@
         <li><a href="team_contributions.html">Team Contributions</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
-      <a href="https://github.iu.edu/moukanda/test" class="github-btn" target="_blank">
+      <a href="https://github.com/Dr-Data-Azam/FHIR-Powered-Python-ETL" class="github-btn" target="_blank">
         <img src="images/github_image.png" class="github-icon" alt="GitHub Logo">
         <span>View Project on GitHub</span>
       </a>
@@ -33,19 +33,44 @@
       <p>Key insights from the project include the effectiveness of using FHIR APIs to streamline data extraction, challenges faced in ensuring data consistency, and potential areas for improvement in the pipeline.</p>
       
       <img src="images/insights_image.png" alt="Project Insights" class="section-image">
-      <p style="margin-top: 20px; margin-bottom: 20px;">This project provided a comprehensive, hands-on understanding of how health data can be effectively transferred between systems using standardized APIs and coding frameworks. By building an end-to-end ETL pipeline using Python, we not only deepened our technical proficiency with FHIR resources but also learned the importance of clean data formatting, accurate terminology usage, and strict adherence to healthcare interoperability standards. The structure of FHIR, especially its modular resource model, gave us a strong foundation for programmatically managing patient information, clinical conditions, and procedures.
+      <h2>Key Insights Gained from the Project</h2>
+      <p>The development of our ETL pipeline for FHIR-based healthcare data exchange provided several critical insights:
     </p>
-      <p style="margin-top: 20px; margin-bottom: 20px;">One of the most valuable insights was understanding the difference between real-world clinical data systems and abstracted programming models. For example, translating clinical conditions between SNOMED CT and ICD-10 revealed gaps in terminology mapping that don’t always have one-to-one relationships. This forced us to think critically about fallback mechanisms, validation logic, and the consequences of missing data. Additionally, building HL7 v2 messages from FHIR resources emphasized the challenge of supporting legacy system interoperability in modern health IT workflows.
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 25px; margin-bottom: 10px"><strong>1. FHIR API Variability and Standardization:</strong></p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 10px;"><strong>•  </strong>FHIR APIs, despite being standardized, exhibit implementation differences across systems like OpenEMR and Primary Care EHR. Tasks 1 and 2 demonstrated the need for robust authentication handling (using bearer tokens) and error management to ensure reliable data extraction, as seen in the successful retrieval of patient and condition data</p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 30px;"><strong>•  </strong>Using SNOMED CT codes (e.g., <code>"444814009"</code> for Viral sinusitis in Task 2) underscored the importance of standardized terminologies for interoperability, but mapping parent and child concepts via the Hermes Terminology Server required careful handling of hierarchical relationships.</p>
+
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 25px; margin-bottom: 10px"><strong>2. Data Transformation Nuances:</strong></p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 10px;"><strong>•  </strong>Transforming FHIR JSON to HL7 v2 messages (Task 5) was complex due to structural differences. Automating ICD-10 mappings (e.g., mapping SNOMED code <code>"444814009"</code> to ICD-10 <code>"J32.9"</code> for Sinusitis) required precise API calls and error handling, highlighting the need for robust transformation logic.</p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 30px;"><strong>•  </strong>Handling inconsistent data, such as missing address fields, necessitated default values (e.g., <code>"DefaultDistrict"</code>) and cleaning techniques to ensure compatibility with the target API.</p>
+
+      <p style="list-style-position: inside; padding-left: 2em;" margin-top: 25px; margin-bottom: 10px><strong>3. Visualization and Clinical Insights::</strong></p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 10px;"><strong>•  </strong>Analysis of conditions from OpenEMR (Task 1) revealed a high prevalence of respiratory disorders, such as sinusitis, visualized in a bar chart showing condition counts by SNOMED CT category.</p>
+      <p style="list-style-position: inside; padding-left: 4em; margin-top: 10px; margin-bottom: 30px;"><strong>•  </strong>Blood pressure data from Task 3 (<code>122/83 mmHg</code>, classified as normal) provided actionable insights for patient monitoring, demonstrating the pipeline's utility in clinical contexts.</p>
+      <h2>General Reflection</h2>
+      <h3>Challenges</h3>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Terminology Mapping Issues:</strong>  Initially, we selected a patient with hypertriglyceridemia, but the condition was not correctly identified in our JSON output due to a spelling discrepancy between <code>"hypertriglyceridemia"</code> and <code>"hypertriglyceridaemia"</code> in the SNOMED CT concept. Additionally, this condition lacked a <code>"Finding site"</code> property, forcing us to select a patient with sinusitis, which had clear SNOMED mappings (e.g., <code>"Nasal sinus structure"</code>).
     </p>
-      <p style="margin-top: 20px; margin-bottom: 20px;">Throughout the project, we encountered a variety of challenges: authentication tokens would expire, conditions would fail validation due to subtle schema mismatches, and Hermes (our terminology server) would return unexpected results or timeouts. However, each of these issues provided learning opportunities. We improved our debugging skills, modularized our code for easier reuse, and added conditional checks to prevent our scripts from crashing when something went wrong.
-    </p>
-      <p style="margin-top: 20px; margin-bottom: 20px;">A key lesson we took away was the value of maintaining consistent patient IDs across all tasks. Initially, mismatches between the resource IDs across tasks led to broken references. By saving the Task 1 patient ID and reusing it for all subsequent POST requests, we ensured data continuity across Condition, Observation, and Procedure tasks. Another important practice was validating resources only after they had been posted and saved as JSON, to keep the ETL logic and quality control steps cleanly separated.
-    </p>
-      <p style="margin-top: 20px; margin-bottom: 20px;">
-        In the future, this pipeline could be extended to include real-time monitoring dashboards, more comprehensive SNOMED/ICD mapping tools, or even EHR integration testing with real patient data (de-identified). Overall, this project helped us connect health informatics theory with practice, and gave us valuable experience that we can take forward into real-world clinical data engineering roles.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Access Token Issues:</strong> The refresh token frequently failed, causing authentication errors during API calls. We had to repeatedly obtain new access tokens, disrupting workflow and requiring manual intervention.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 20px;"><strong>•  Filtering Relevant Conditions:</strong> Early attempts to retrieve conditions from OpenEMR returned non-disorder conditions, which were irrelevant for our pipeline. We addressed this by implementing a for loop and an if condition in Task 1 to filter conditions containing <code>"(disorder)"</code> in their display name, ensuring only relevant disorders like Viral sinusitis were processed, as seen in <code>disorder_condition.json</code>.</p>
+      <h3>Lessons Learned</h3>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Modular Code:</strong> Reusable functions (e.g., get_headers, save_json) improved code maintainability and simplified debugging across tasks.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Error Handling:</strong> Comprehensive checks for API status codes (e.g., <code>201</code> for successful POSTs in Tasks 1–4) ensured pipeline reliability.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 20px;"><strong>•  Teamwork:</strong> Clear role assignments and regular communication enabled efficient task completion, from coding to website development.</p>
+        
+      <h3>Potential Improvements</h3>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Integrated Validation:</strong> Embedding resource validation within the ETL pipeline could streamline processes, rather than performing it separately.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 10px;"><strong>•  Enhanced Visualizations:</strong> Using interactive tools like Plotly for dynamic charts could provide richer insights into patient data trends.</p>
+      <p style="list-style-position: inside; padding-left: 2em; margin-top: 10px; margin-bottom: 20px;"><strong>•  Scalability:</strong> Implementing batch processing would optimize the pipeline for larger datasets, enhancing real-world applicability.</p>
     <h2>Visualization</h2>
-    <img src="" alt="Project Insights" class="section-image">
-    <p style="margin-top: 20px; margin-bottom: 20px;">Text here</p>
+    <p style="margin-top: 10px; margin-bottom: 20px;">In this visualization task, we extracted patient data from the OpenEMR FHIR server using authenticated API requests. Specifically, we retrieved resources from the Patient endpoint and parsed demographic attributes including gender and birthDate.</p>
+
+    <div class="image-row">
+      <img src="images/insights1.png" alt="Insight 1" class="section-image">
+      <img src="images/insights2.png" alt="Insight 2" class="section-image">
+    </div>
+    
+    <p style="margin-top: 35px; margin-bottom: 60px;">Two bar charts were generated: the first shows the distribution of patients by gender, and the second shows the distribution of patients by birth decade. From the gender chart, we observe a higher proportion of female patients <code>(n=~63)</code> compared to male patients <code>(n=~38)</code>, indicating a gender imbalance in the current OpenEMR dataset. The birth decade distribution reveals that most patients were born between the 1960s and 2000s, with peaks around the 1990s and 1970s, suggesting that the patient population is predominantly middle-aged to younger adults. These insights help us better understand the demographic composition of the clinical database and guide further analysis, such as condition prevalence by age or gender.</p>
     </section>
   </div>
 
