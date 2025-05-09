@@ -1,4 +1,4 @@
-# FHIR Powered Python ETL
+# FHIR Powered Python ETL Project for Healthcare Interoperability
 
 ## Visit the project website
 <a href="https://dr-data-azam.github.io/FHIR-Powered-Python-ETL/index.html">FHIR-Powered-Python-ETL-Project-Website</a>
@@ -17,8 +17,8 @@ This project leverages the **FHIR API**, **OAuth2 authentication**, and **SNOMED
 ## Project Structure
 
 FHIR-Powered-Python-ETL/
-│
-├── FHIR_ETL_Project/ # Main ETL project code
+- **│**
+- **├──** FHIR_ETL_Project/ # Main ETL project code
 ├── images/ # Folder for images and diagrams
 ├── index.html # Homepage for the website
 ├── about.html # About the project page
